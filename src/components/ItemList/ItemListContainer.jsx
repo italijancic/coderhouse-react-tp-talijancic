@@ -1,5 +1,8 @@
 import React from 'react'
 import Card from '../Card/Card'
+
+import { Typography } from '@mui/material'
+
 import iPhone14 from '../Card/img/iphone14.jpg'
 import iPhone13 from '../Card/img/iphone13.png'
 import iPadPro from '../Card/img/ipadPro.jpeg'
@@ -43,18 +46,21 @@ export default function ItemListContainer(props) {
 
   return (
     <div className='' id=''>
-      <h1>{props.greeting}</h1>
 
-        {products.map( (product) => {
-          return (
-            <Card
-              key = {product.id}
-              title={product.title}
-              price={product.price}
-              imgUrl={product.img}
-            />
-          )
-        })}
+      <Typography variant="h2" component="h1">
+        {props.greeting}
+      </Typography>
+
+      {products.map( (product) => {
+        return (
+          <Card
+            key = {product.id}
+            title={product.title}
+            price={product.price}
+            imgUrl={product.img}
+          />
+        )
+      })}
     </div>
   )
 }
