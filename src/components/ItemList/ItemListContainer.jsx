@@ -55,25 +55,6 @@ export default function ItemListContainer(props) {
             />
           )
         })}
-
-        {/* <Card
-          title='UX/UI'
-          detail='Lorem impsun'
-          price='100'
-          imgUrl={iPhone14}
-        />
-        <Card
-          title='React.js'
-          detail='Lorem impsun'
-          price='150'
-          imgUrl='https://blog.desafiolatam.com/wp-content/uploads/2019/04/react-galaxia.png'
-        />
-        <Card
-          title='js'
-          detail='Lorem impsun'
-          price='250'
-          imgUrl='https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png'
-        /> */}
     </div>
   )
 }
