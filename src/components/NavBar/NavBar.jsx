@@ -163,16 +163,4 @@ export default function NavBar() {
     </AppBar>
   );
 
-  // return (
-  //   <div>
-  //       <nav>
-  //           <ul>
-  //             <li>Curso UX/UI</li>
-  //             <li>Curso React</li>
-  //             <li>Curso JS</li>
-  //           </ul>
-  //       </nav>
-  //       <CartWidget />
-  //   </div>
-  // )
 }

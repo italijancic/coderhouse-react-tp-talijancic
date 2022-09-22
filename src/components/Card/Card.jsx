@@ -1,28 +1,34 @@
-import "./card.css"
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-import React from 'react'
-import Button from '../Button/Button'
-
-export default function Card(props) {
-  // Can return only one father element
+export default function MediaCard(props) {
   return (
-    <div className='card'>
-      <CardImg url={props.imgUrl} />
-      <div className='card-detaail'>
-        <h2>{props.title}</h2>
-        <h4>{`$ ${props.price}`}</h4>
-      </div>
-      <Button text={`Comprar ${props.title}`} />
-    </div>
-  )
+    <Card
+      raised
+      // sx={{padding: "0.1em" }}
+    >
+      <CardMedia
+        component="img"
+        height="600"
+        image={props.imgUrl}
+        alt={props.title}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          $ {props.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Comprar</Button>
+      </CardActions>
+    </Card>
+  );
 }
-
-// Litle component inside a component file
-function CardImg(props) {
-  return (
-    <div className='card-img'>
-      <img src={props.url} alt=''></img>
-    </div>
-  )
-}
-
