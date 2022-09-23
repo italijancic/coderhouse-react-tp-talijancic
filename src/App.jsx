@@ -3,7 +3,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Container } from '@mui/system'
 import Footer from './components/Footer/Footer';
 
-import ItemList from './components/ItemList/ItemListContainer';
+import ItemListContainer from './components/ItemList/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 
 
@@ -21,9 +21,13 @@ function App() {
     <Container maxWidth="xl">
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
+
         <NavBar />
-        <ItemList greeting='Lista de Productos' />
+
+        <ItemListContainer greeting='Lista de Productos' />
+
         <Footer />
+
       </ThemeProvider>
     </Container>
   );

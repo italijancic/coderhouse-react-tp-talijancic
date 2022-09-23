@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AppleIcon from '@mui/icons-material/Apple';
 
 // My imports
+import UserMenu from '../UserMenu/UserMenu';
 import CartWidget from './CartWidget';
 
 const pages = ['iPhone', 'iPad', 'MacBook'];
@@ -119,7 +120,13 @@ export default function NavBar() {
             ))}
           </Box>
 
-          <CartWidget/>
+          <Box mr={4}>
+            <CartWidget/>
+          </Box>
+
+          <Box>
+            <UserMenu/>
+          </Box>
 
         </Toolbar>
       </Container>
