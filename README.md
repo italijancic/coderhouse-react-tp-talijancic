@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Coderhouse: Curso de React.js ⚛️
+## 🚀 1ra Pre-Entrega Proyecto Final
+Author: Ivan Talijancic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 📦 Contenido del repositorio
 
-## Available Scripts
+Resolucíon de la consigna propuesta para la 1ra pre-entrega del proyecto final
 
-In the project directory, you can run:
+#### 📋 Consignas
 
-### `npm start`
+- Crea una carpeta dentro de `src/` llamada components que contenga la implementación del componente NabBar dentro del archivo `NabVar.jsx`. Su funcionalidad es la de renderizar una barra de menú (NabVar).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Crea un componente `CartWidget.jsx` con un ícono, y ubícalo en el navbar. Agrega algunos estilos con bootstrap/materialize u otro.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Crea un componente contenedor `ItemListContainer.jsx` con una `{prop.greeting}`, y muestra el mensaje dentro del contenedor con el styling integrado
 
-### `npm test`
+#### ✅ Objetivos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Crear el menú e-commerce de tu proyecto
 
-### `npm run build`
+- Crear la landing de tu proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 🚚 Entregables
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Brand (título/nombre de la tienda)
 
-### `npm run eject`
+- Un listado de categorías clickeables
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Incorpora alguna librería de estilos:
+    - Bootstrap/materialize u otro de preferencia (opcional)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Crear un componente `CartWidget.jsx` que haga rendering de un ícono Cart, e inclúyelo dentro de NavBar.jsx para que esté visible en todo momento.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Crear un componente `ItemListContainer.jsx`. Importarlo dentro de `App.jsx` y debajo de `NavBar.jsx`
