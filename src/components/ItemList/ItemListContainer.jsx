@@ -1,16 +1,16 @@
 import React from 'react'
-import Card from '../Card/Card'
-
-// import Grid from '@mui/material/Grid'; // Grid version 1
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-
+import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
 
-import iPhone14 from '../Card/img/iphone14.jpg'
-import iPhone13 from '../Card/img/iphone13.png'
-import iPadPro from '../Card/img/ipadPro.jpeg'
-import macBookPro from '../Card/img/MacbookPro.jpeg'
-import macBookAir from '../Card/img/MacBookAirM2.jpeg'
+// My imports
+import ProductCard from '../ProductCard/ProductCard'
+// Cards products images
+import iPhone14 from '../ProductCard/img/iphone14.jpg'
+import iPhone13 from '../ProductCard/img/iphone13.png'
+import iPadPro from '../ProductCard/img/ipadPro.jpeg'
+import macBookPro from '../ProductCard/img/MacBookPro.webp'
+import macBookAir from '../ProductCard/img/MacBookAirM2.jpeg'
 
 export default function ItemListContainer(props) {
 
@@ -48,17 +48,20 @@ export default function ItemListContainer(props) {
   ]
 
   return (
-    <div>
-
-      <Typography variant="h2" component="h1">
+    <Box>
+      <Typography
+        variant='h2'
+        component='h1'
+        style={{margin: '0.5em 0'}}
+      >
         {props.greeting}
       </Typography>
 
-      <Grid container spacing={6}>
+      <Grid container spacing={{xs:3, sm:3, xl:5}}>
         {products.map((product) => {
           return (
-            <Grid key={product.id} xs={12} sm={6} xl={4}>
-              <Card
+            <Grid item key={product.id} xs={12} lg={6} xl={4}>
+              <ProductCard
                 key={product.id}
                 title={product.title}
                 price={product.price}
@@ -68,7 +71,6 @@ export default function ItemListContainer(props) {
           )
         })}
       </Grid>
-
-    </div>
+    </Box>
   )
 }
