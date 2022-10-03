@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AppleIcon from '@mui/icons-material/Apple';
+import { Link } from 'react-router-dom'
 
 // My imports
 import UserMenu from '../UserMenu/UserMenu';
@@ -34,12 +35,12 @@ export default function NavBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AppleIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Link to='/' style={{color: 'white', textDecoration: 'none'}}>
+            <AppleIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          </Link>
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -52,7 +53,6 @@ export default function NavBar() {
           >
             Apple Reconquista
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -84,12 +84,16 @@ export default function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link key={page} to={`/category/${page}`} style={{color: 'black', textDecoration: 'none'}}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AppleIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Link to='/' style={{color: 'white', textDecoration: 'none'}}>
+            <AppleIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          </Link>
           <Typography
             variant="h5"
             noWrap
@@ -110,13 +114,15 @@ export default function NavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page} to={`/category/${page}`} style={{color: 'white', textDecoration: 'none'}}>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 

@@ -5,8 +5,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ItemCount from '../ItemCount/ItemCount';
 
-export default function ProductCard(props) {
+import { Link } from 'react-router-dom'
+
+// import Button from '../Button/Button'
+
+export default function Item(props) {
   return (
     <Card
       raised
@@ -36,8 +41,15 @@ export default function ProductCard(props) {
         <Typography variant="body2" color="text.secondary">
           $ {props.price}
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {props.stock} unidades
+        </Typography>
       </CardContent>
       <CardActions>
+          <Link to={`/item/${props.id}`}>
+            <Button size="small">Ver detalle</Button>
+          </Link>
+        <ItemCount initial={1} stock={props.stock} />
         <Button size="small">Comprar</Button>
       </CardActions>
     </Card>
