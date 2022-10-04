@@ -43,7 +43,7 @@ const products = [
         'id': 5,
         'title': 'MacBook Pro M2',
         'price': 1400,
-        'stock': 3478,
+        'stock': 1658,
         'img': "https://media.ldlc.com/r1600/ld/products/00/05/95/97/LD0005959735.jpg",
         'detail': 'New MacBook Pro 13"',
         'category': 'MacBook',

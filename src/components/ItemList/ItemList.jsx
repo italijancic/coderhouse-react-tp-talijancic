@@ -9,7 +9,7 @@ import Item from '../Item/Item'
 
 export default function ItemList(props) {
   return (
-    <Wrap padding={'40px 0 40px 0'} spacing='30px' align='center' justify='center'>
+    <Wrap padding={'30px 0 30px 0'} spacing='30px' align='center' justify='center'>
 
       {props.productsList.map((product) => {
         return(
