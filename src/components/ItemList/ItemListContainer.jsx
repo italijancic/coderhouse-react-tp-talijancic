@@ -29,7 +29,7 @@ export default function ItemListContainer(props) {
   }, [categoryId])
 
   return (
-    <Box px={0}>
+    <Box px={{base: 4, lg: 40}}>
       <Box paddingTop={'20px'}>
         <Text
           fontSize={{base: '2xl', sm: '4xl'}}

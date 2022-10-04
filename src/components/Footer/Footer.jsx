@@ -42,9 +42,9 @@ export default function LargeWithLogoLeft() {
             <Link>Instagram</Link>
             <Link>LinkedIn</Link>
           </Stack>
-          <Stack spacing={6}>
+          <Stack spacing={1}>
             <Box>
-            <HStack spacing={2} alignItems={'center'}>
+            <HStack spacing={1}>
               <Icon as={ImAppleinc} w={6} h={6} />
               <Text fontSize={'lg'}>
                 Apple Reconquista

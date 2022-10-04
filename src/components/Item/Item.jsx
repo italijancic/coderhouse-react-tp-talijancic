@@ -19,8 +19,7 @@ function Item({ product }) {
     // Card box container
     <Box
       bg={useColorModeValue('white', 'gray.800')}
-      width={{ base: "sm", lg:'lg' }}
-      // width='md'
+      width={{ base: "sm", xl:'lg' }}
       borderWidth="1px"
       rounded="lg"
       shadow="lg"
