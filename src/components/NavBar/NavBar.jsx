@@ -1,142 +1,90 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import AppleIcon from '@mui/icons-material/Apple';
-import { Link } from 'react-router-dom'
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  IconButton,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  Spacer,
+  Icon,
+  Text,
+  Link,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { ImAppleinc } from 'react-icons/im'
+import { ColorModeSwitcher } from '../ColorModeSwitcher/ColorModeSwitcher';
+import { Link as ReachLink } from 'react-router-dom';
+import CartWidget from '../CartWidget/CartWidget';
 
-// My imports
-import UserMenu from '../UserMenu/UserMenu';
-import CartWidget from './CartWidget';
-
-const pages = ['iPhone', 'iPad', 'MacBook'];
-
+const Links = ['iPhone', 'iPad', 'MacBook'];
 
 export default function NavBar() {
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Link to='/' style={{color: 'white', textDecoration: 'none'}}>
-            <AppleIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={{ base: 4, md: 40 }}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <IconButton
+          size={'md'}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={'Open Menu'}
+          display={{ md: 'none' }}
+          onClick={isOpen ? onClose : onOpen}
+        />
+        <HStack spacing={3} alignItems={'center'}>
+          <Link as={ReachLink} to={'/'}>
+            <Icon as={ImAppleinc} w={6} h={6} ml={{ base: 5, md: 0 }} />
           </Link>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Roboto',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Apple Reconquista
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link key={page} to={`/category/${page}`} style={{color: 'black', textDecoration: 'none'}}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </Link>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Link to='/' style={{color: 'white', textDecoration: 'none'}}>
-            <AppleIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          </Link>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'Roboto',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            AppleRqta
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link key={page} to={`/category/${page}`} style={{color: 'white', textDecoration: 'none'}}>
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              </Link>
+          <Text fontSize={'lg'} display={{ base: 'none', md: 'block' }}>
+                Apple Reconquista
+          </Text>
+          <HStack
+            as={'nav'}
+            spacing={4}
+            display={{ base: 'none', md: 'flex' }}>
+            {Links.map((link) => (
+              <NavLink key={link}>{link}</NavLink>
             ))}
-          </Box>
+          </HStack>
 
-          <Box mr={4}>
-            <CartWidget/>
-          </Box>
+        </HStack>
 
-          <Box>
-            <UserMenu/>
-          </Box>
+        <Spacer />
 
-        </Toolbar>
-      </Container>
-    </AppBar>
+        <HStack spacing={8} alignItems={'center'}>
+          <CartWidget />
+          <ColorModeSwitcher />
+          <Avatar display={{ base: 'none', md: 'block' }} />
+        </HStack>
+      </Flex>
+
+      {isOpen ? (
+        <Box pb={4} display={{ md: 'none' }}>
+          <Stack as={'nav'} spacing={4}>
+            {Links.map((link) => (
+              <NavLink key={link}>{link}</NavLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
+
+    </Box>
   );
-
 }
+
+const NavLink = ({ children }) => (
+  <Link
+    as={ReachLink} to={`/category/${children}`}
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+  >
+    {children}
+  </Link>
+);

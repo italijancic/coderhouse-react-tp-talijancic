@@ -1,24 +1,24 @@
 import React from 'react'
-import { Grid } from '@mui/material'
+import {
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react'
+
 import Item from '../Item/Item'
+
 
 export default function ItemList(props) {
   return (
-    <Grid container spacing={{ xs: 3, sm: 3, xl: 5 }}>
+    <Wrap padding={'40px 0 40px 0'} spacing='30px' align='center' justify='center'>
+
       {props.productsList.map((product) => {
-        return (
-          <Grid item key={product.id} xs={12} lg={6} xl={4}>
-            <Item
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              price={product.price}
-              stock={product.stock}
-              imgUrl={product.img}
-            />
-          </Grid>
+        return(
+          <WrapItem key={product.id}>
+            <Item product={product} />
+          </WrapItem>
         )
       })}
-    </Grid>
+
+    </Wrap>
   )
 }
