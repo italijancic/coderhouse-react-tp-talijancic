@@ -18,11 +18,8 @@ const darkTheme = createTheme({
   },
 });
 
-// Functional component
 function App() {
 
-  // 1. Content our app on BrowserRouter
-  // 2. Define routes
   return (
     <BrowserRouter>
       <Container maxWidth="xl">
@@ -31,17 +28,11 @@ function App() {
 
           <NavBar />
 
-          {/* routers components */}
           <Routes>
-
             <Route path='/' element={<ItemListContainer greeting='Lista de Productos' />} />
-            <Route path='/category/:categoryID' element={<ItemListContainer greeting='Lista de Productos' />} />
-
-            {/* Defined parametric route */}
+            <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
             <Route path='/item/:id' element={<ItemDetailContainer/>} />
-
             <Route path='*' element={ <h1>404 Page not found</h1> }/>
-
           </Routes>
 
           <Footer />

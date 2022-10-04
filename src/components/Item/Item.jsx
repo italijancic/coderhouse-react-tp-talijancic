@@ -9,13 +9,11 @@ import ItemCount from '../ItemCount/ItemCount';
 
 import { Link } from 'react-router-dom'
 
-// import Button from '../Button/Button'
-
 export default function Item(props) {
   return (
     <Card
       raised
-      // sx={{padding: "0.1em" }}
+    // sx={{padding: "0.1em" }}
     >
       <div
         style={{
@@ -24,15 +22,17 @@ export default function Item(props) {
           justifyContent: "center"
         }}
       >
-        <CardMedia
-          style={{
-            width: "auto",
-          }}
-          component="img"
-          height="500"
-          image={props.imgUrl}
-          alt={props.title}
-        />
+        <Link to={`/item/${props.id}`}>
+          <CardMedia
+            style={{
+              width: "auto",
+            }}
+            component="img"
+            height="500"
+            image={props.imgUrl}
+            alt={props.title}
+          />
+        </Link>
       </div>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -46,9 +46,9 @@ export default function Item(props) {
         </Typography>
       </CardContent>
       <CardActions>
-          <Link to={`/item/${props.id}`}>
-            <Button size="small">Ver detalle</Button>
-          </Link>
+        <Link to={`/item/${props.id}`} style={{ textDecoration: 'none' }}>
+          <Button size="small">Ver detalle</Button>
+        </Link>
         <ItemCount initial={1} stock={props.stock} />
         <Button size="small">Comprar</Button>
       </CardActions>

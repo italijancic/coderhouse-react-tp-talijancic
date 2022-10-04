@@ -11,19 +11,19 @@ import ItemList from './ItemList'
 export default function ItemListContainer(props) {
 
   const [ products, setProducts ] = useState([])
-  const { categoryID } = useParams()
+  const { categoryId } = useParams()
 
   useEffect( () => {
-    if (categoryID === undefined) {
+    if (categoryId === undefined) {
       getProducts()
         .then(data => setProducts(data))
         .catch(error => console.error(error))
     } else {
-      getPoductsByCategory(categoryID)
+      getPoductsByCategory(categoryId)
         .then(data => setProducts(data))
         .then(error => console.log(error))
     }
-  }, [categoryID])
+  }, [categoryId])
 
   return (
     <Box>

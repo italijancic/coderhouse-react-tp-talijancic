@@ -29,7 +29,7 @@ export default function ItemDetailContainer() {
   return (
     <Card
       raised
-    // sx={{padding: "0.1em" }}
+      style ={{marginTop: "1em" }}
     >
       <div
         style={{
@@ -63,7 +63,7 @@ export default function ItemDetailContainer() {
         </Typography>
       </CardContent>
       <CardActions>
-          <Link to='/'>
+          <Link to='/' style={{textDecoration: 'none'}}>
             <Button size="small">Volver</Button>
           </Link>
       </CardActions>
