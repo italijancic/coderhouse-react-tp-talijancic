@@ -42,7 +42,7 @@ export default function LargeWithLogoLeft() {
             <Link>Instagram</Link>
             <Link>LinkedIn</Link>
           </Stack>
-          <Stack spacing={1}>
+          <Stack spacing={1} align="end" justify='end'>
             <Box>
             <HStack spacing={1}>
               <Icon as={ImAppleinc} w={6} h={6} />
