@@ -20,7 +20,7 @@ export default function ItemCount({initial, stock}) {
 
   return (
     <Flex mt="1" justifyContent="space-between" alignContent="center">
-      <Button onClick={addHandler} colorScheme='teal' variant='ghost'>
+      <Button onClick={addHandler} colorScheme='teal' variant='solid' px='30px'>
         +
       </Button>
       <Text
@@ -29,7 +29,7 @@ export default function ItemCount({initial, stock}) {
         fontWeight={'300'}>
         {cant}
       </Text>
-      <Button onClick={substractionHandler} colorScheme='teal' variant='ghost'>
+      <Button onClick={substractionHandler} colorScheme='teal' variant='solid' px='30px'>
         -
       </Button>
     </Flex>

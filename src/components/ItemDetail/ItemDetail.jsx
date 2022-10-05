@@ -127,7 +127,7 @@ export default function ItemDetail({ product }) {
           </Button>
           <Stack direction="row" alignItems="center" justifyContent={'center'}>
             <MdLocalShipping />
-            <Text color="green.500">Entrega en 2-3 días hábiles</Text>
+            <Text color="teal">Entrega en 2-3 días hábiles</Text>
           </Stack>
         </Stack>
       </SimpleGrid>
