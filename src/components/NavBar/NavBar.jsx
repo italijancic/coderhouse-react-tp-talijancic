@@ -24,7 +24,7 @@ export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={{ base: 4, sm: 20, lg: 30, '2xl':40 }}>
+    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={{ base: 4, sm: 20, lg: 30, '2xl': 40 }}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}
@@ -37,9 +37,20 @@ export default function NavBar() {
           <Link as={ReachLink} to={'/'}>
             <Icon as={ImAppleinc} w={6} h={6} ml={{ base: 5, md: 0 }} />
           </Link>
-          <Text fontSize={'lg'} display={{ base: 'none', lg: 'block' }}>
-                Apple Reconquista
-          </Text>
+          <Link
+            as={ReachLink}
+            to={'/'}
+            px={2}
+            py={1}
+            rounded={'md'}
+            _hover={{
+              textDecoration: 'none',
+              bg: useColorModeValue('gray.200', 'gray.700'),
+            }}>
+            <Text fontSize={'lg'} display={{ base: 'none', lg: 'block' }}>
+              Apple Reconquista
+            </Text>
+          </Link>
           <HStack
             as={'nav'}
             spacing={4}

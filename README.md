@@ -13,7 +13,7 @@ Resolucíon de la consigna propuesta para la 2da pre-entrega del proyecto final
 
 #### ✅ Objetivos
 
-- Desarrollar la navegabilidad básica de la aplicación, demostrando que la app permote ver el catálogo y navegar a un detalle.
+- Desarrollar la navegabilidad básica de la aplicación, demostrando que la app permite ver el catálogo y navegar a un detalle.
 
 ##### - **Rutas a configurar:**
 - `'/'` navega a `<ItemListContainer />`
