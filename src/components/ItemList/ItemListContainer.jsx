@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
-import Box from '@mui/material/Box'
+import React, { useState, useEffect } from 'react'
+import {
+  Box,
+  Text,
+} from '@chakra-ui/react'
 
 import { useParams } from 'react-router-dom'
 
-// My imports
-import getProducts, { getPoductsByCategory } from '../../mockAPI/mockAPI'
 import ItemList from './ItemList'
+import getProducts, { getPoductsByCategory } from '../../mockAPI/mockAPI'
 
 export default function ItemListContainer(props) {
 
-  const [ products, setProducts ] = useState([])
+  const [products, setProducts] = useState([])
   const { categoryId } = useParams()
 
-  useEffect( () => {
+  useEffect(() => {
     if (categoryId === undefined) {
       getProducts()
         .then(data => setProducts(data))
@@ -21,23 +22,25 @@ export default function ItemListContainer(props) {
     } else {
       getPoductsByCategory(categoryId)
         .then(data => setProducts(data))
-        .then(error => console.log(error))
+        .catch(error => {
+          console.error(error)
+        })
     }
   }, [categoryId])
 
   return (
-    <Box>
+    <Box px={{base: 4, sm: 20, lg: 30, '2xl': 40}}>
+      <Box paddingTop={'20px'}>
+        <Text
+          fontSize={{base: '2xl', sm: '4xl'}}
+        >
+          {props.greeting}
+        </Text>
+      </Box>
 
-      <Typography
-        variant='h2'
-        component='h1'
-        style={{margin: '0.5em 0'}}
-      >
-        {props.greeting}
-      </Typography>
-
-      <ItemList productsList={products}/>
+      <ItemList productsList={products} />
 
     </Box>
   )
+
 }

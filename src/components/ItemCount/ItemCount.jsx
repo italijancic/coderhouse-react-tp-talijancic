@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
+import {
+  Flex,
+  Button,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
 export default function ItemCount({initial, stock}) {
 
@@ -16,16 +19,19 @@ export default function ItemCount({initial, stock}) {
   }
 
   return (
-    <Box>
-
-      <Button onClick={addHandler}> + </Button>
-
-      <Typography variant='span' component='span'>
+    <Flex mt="1" justifyContent="space-between" alignContent="center">
+      <Button onClick={addHandler} colorScheme='teal' variant='ghost'>
+        +
+      </Button>
+      <Text
+        color={useColorModeValue('gray.500', 'gray.400')}
+        fontSize={'2xl'}
+        fontWeight={'300'}>
         {cant}
-      </Typography>
-
-      <Button onClick={substractionHandler}> - </Button>
-
-    </Box>
+      </Text>
+      <Button onClick={substractionHandler} colorScheme='teal' variant='ghost'>
+        -
+      </Button>
+    </Flex>
   )
 }

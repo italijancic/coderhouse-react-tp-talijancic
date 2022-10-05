@@ -1,44 +1,33 @@
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Container } from '@mui/system'
+import React from 'react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+
+import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import ItemListContainer from './components/ItemList/ItemListContainer';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
-
-import ItemListContainer from './components/ItemList/ItemListContainer';
-import NavBar from './components/NavBar/NavBar';
-
-
-const darkTheme = createTheme({
-  palette: {
-    // mode: 'dark',
-    mode: 'light',
-  },
-});
-
 function App() {
-
   return (
     <BrowserRouter>
-      <Container maxWidth="xl">
-        <ThemeProvider theme={darkTheme}>
-          <CssBaseline />
 
-          <NavBar />
+      <ChakraProvider theme={theme}>
 
-          <Routes>
-            <Route path='/' element={<ItemListContainer greeting='Lista de Productos' />} />
-            <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
-            <Route path='/item/:id' element={<ItemDetailContainer/>} />
-            <Route path='*' element={ <h1>404 Page not found</h1> }/>
-          </Routes>
+        <NavBar />
 
-          <Footer />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting='Nuestros productos' />} />
+          <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
+          <Route path='/item/:id' element={<ItemDetailContainer />} />
+          <Route path='*' element={<PageNotFound /> } />
+        </Routes>
 
-        </ThemeProvider>
-      </Container>
+        <Footer />
+
+      </ChakraProvider>
+
     </BrowserRouter>
   );
 }
