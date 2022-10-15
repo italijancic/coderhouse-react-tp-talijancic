@@ -17,12 +17,12 @@ export default function ItemListContainer(props) {
   useEffect(() => {
     if (categoryId === undefined) {
       getProducts()
-        .then(data => setProducts(data))
-        .catch(error => console.error(error))
+        .then((data) => setProducts(data))
+        .catch((error) => console.error(error))
     } else {
       getPoductsByCategory(categoryId)
-        .then(data => setProducts(data))
-        .catch(error => {
+        .then((data) => setProducts(data))
+        .catch((error) => {
           console.error(error)
         })
     }

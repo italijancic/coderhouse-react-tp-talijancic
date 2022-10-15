@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { cartContext } from '../../contexts/CartContext';
 
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   Image,
   Flex,
   VStack,
-  Button,
   Heading,
   SimpleGrid,
   StackDivider,
@@ -18,11 +18,19 @@ import {
 import { MdLocalShipping } from 'react-icons/md';
 
 // Read params from url
-import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount';
 
 // My imports
 export default function ItemDetail({ product }) {
+
+  // const [cant, setCant] = useState(0)
+
+  const { addToCart, isInCart } = useContext(cartContext)
+
+  function handlerAddToCart(cant) {
+    // setCant(cant)
+    addToCart(product, cant)
+  }
 
   return (
     <Container maxW={'7xl'}>
@@ -60,6 +68,10 @@ export default function ItemDetail({ product }) {
               fontSize={'2xl'}>
               {product.price ? `U$S ${product.price}` : ''}
             </Text>
+            <Stack direction="row" alignItems="center" justifyContent={'start'}>
+              <MdLocalShipping />
+              <Text color="teal">Entrega en 2-3 días hábiles</Text>
+            </Stack>
           </Box>
 
           <Stack
@@ -87,48 +99,15 @@ export default function ItemDetail({ product }) {
             </VStack>
           </Stack>
 
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
-            spacing={{ base: 8, md: 10 }}
-          >
-            <ItemCount initial={0} stock={product.stock} />
-            <Link to={'/'}>
-              <Button
-                rounded={'none'}
-                w={'full'}
-                size={'lg'}
-                py={'7'}
-                bg={useColorModeValue('gray.900', 'gray.50')}
-                color={useColorModeValue('white', 'gray.900')}
-                textTransform={'uppercase'}
-                _hover={{
-                  transform: 'translateY(2px)',
-                  boxShadow: 'lg',
-                }}>
-                Volver
-              </Button>
-            </Link>
-          </SimpleGrid>
-
-          <Button
-            rounded={'none'}
-            w={'full'}
-            mt={8}
-            size={'lg'}
-            py={'7'}
-            bg={useColorModeValue('gray.900', 'gray.50')}
-            color={useColorModeValue('white', 'gray.900')}
-            textTransform={'uppercase'}
-            _hover={{
-              transform: 'translateY(2px)',
-              boxShadow: 'lg',
-            }}>
-            Comprar
-          </Button>
-          <Stack direction="row" alignItems="center" justifyContent={'center'}>
-            <MdLocalShipping />
-            <Text color="teal">Entrega en 2-3 días hábiles</Text>
-          </Stack>
+          {isInCart(product.id) === undefined ?
+            <ItemCount
+              text='Agregar al carrito'
+              onAddToCart={handlerAddToCart}
+              initial={1}
+              stock={product.stock}
+            />
+            :
+            <h2>Ver carrito</h2>}
         </Stack>
       </SimpleGrid>
     </Container>

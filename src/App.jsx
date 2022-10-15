@@ -9,26 +9,33 @@ import ItemListContainer from './components/ItemList/ItemListContainer';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
+import { CartContextProvider } from './contexts/CartContext'
+
 function App() {
   return (
-    <BrowserRouter>
+    <CartContextProvider>
 
-      <ChakraProvider theme={theme}>
+      <BrowserRouter>
 
-        <NavBar />
+        <ChakraProvider theme={theme}>
 
-        <Routes>
-          <Route path='/' element={<ItemListContainer greeting='Nuestros productos' />} />
-          <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
-          <Route path='/item/:id' element={<ItemDetailContainer />} />
-          <Route path='*' element={<PageNotFound /> } />
-        </Routes>
+          <NavBar />
 
-        <Footer />
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting='Nuestros productos' />} />
+            <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
+            <Route path='/item/:id' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<PageNotFound />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
 
-      </ChakraProvider>
+          <Footer />
 
-    </BrowserRouter>
+        </ChakraProvider>
+
+      </BrowserRouter>
+
+    </CartContextProvider>
   );
 }
 
