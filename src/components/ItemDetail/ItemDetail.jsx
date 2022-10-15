@@ -68,7 +68,7 @@ export default function ItemDetail({ product }) {
               fontSize={'2xl'}>
               {product.price ? `U$S ${product.price}` : ''}
             </Text>
-            <Stack direction="row" alignItems="center" justifyContent={'start'}>
+            <Stack mt={'2'} direction="row" alignItems="center" justifyContent={'start'}>
               <MdLocalShipping />
               <Text color="teal">Entrega en 2-3 días hábiles</Text>
             </Stack>

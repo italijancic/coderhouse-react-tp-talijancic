@@ -5,7 +5,8 @@ import {
   Icon,
   Link,
   Text,
-  HStack,
+  // HStack,
+  Box,
 } from '@chakra-ui/react'
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -16,18 +17,22 @@ export default function CartWidget() {
   const { getTotalItemCount } = useContext(cartContext)
 
   return (
-    <Link as={ReachLink} to={'/'}>
-      <HStack spacing={0}>
+    <Box position={'relative'}>
+      <Link as={ReachLink} to={'/'}>
         <Icon
           as={HiShoppingCart}
           w={6}
           h={6}
         />
-        <Text fontSize={'sm'} >
-          {getTotalItemCount()}
-        </Text>
-      </HStack>
-    </Link>
-
+      </Link>
+      <Text
+        fontSize={'small'}
+        position='absolute'
+        bottom={-0.5}
+        right={-1.5}
+      >
+        {getTotalItemCount()}
+      </Text>
+    </Box>
   )
 }
