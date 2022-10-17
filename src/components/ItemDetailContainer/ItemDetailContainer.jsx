@@ -4,24 +4,32 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // My imports
-import { getProduct } from '../../mockAPI/mockAPI'
+import { firebaseGetProduct } from '../../services/firebase'
 import ItemDetail from '../ItemDetail/ItemDetail';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 export default function ItemDetailContainer() {
 
   const [product, setProduct] = useState({})
+  const [feedbackMsg, setFeedbackMsg] = useState(null)
 
   const { id } = useParams()
 
   useEffect(() => {
-    getProduct(id)
+    firebaseGetProduct(id)
       .then(data => {
         setProduct(data)
       })
-      .catch(error => console.error(error))
+      .catch(error => setFeedbackMsg(error.message))
   }, [id])
 
   return (
-    <ItemDetail product={product}/>
+    <>
+      { feedbackMsg !== null ?
+        <PageNotFound />
+      :
+        <ItemDetail product={product}/>
+      }
+    </>
   );
 }

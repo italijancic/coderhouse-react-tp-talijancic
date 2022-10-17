@@ -98,7 +98,7 @@ export function getProduct(id) {
             if(product) {
                 resolve(product)
             } else {
-                reject('Product not found')
+                reject( new Error('Product not found'))
             }
         }, 500)
     })
@@ -113,7 +113,7 @@ export function getPoductsByCategory(category) {
             if (categoryItems.length > 0) {
                 resolve(categoryItems)
             } else {
-                reject('Category not found')
+                reject(new Error('Category not found'))
             }
         }, 500)
     })

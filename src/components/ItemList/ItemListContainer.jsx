@@ -2,45 +2,67 @@ import React, { useState, useEffect } from 'react'
 import {
   Box,
   Text,
+  Spinner,
+  Center,
+  VStack,
 } from '@chakra-ui/react'
 
 import { useParams } from 'react-router-dom'
 
 import ItemList from './ItemList'
-import getProducts, { getPoductsByCategory } from '../../mockAPI/mockAPI'
+
+import { firebaseGetProducts, firebaseGetProductsByCategory } from '../../services/firebase'
 
 export default function ItemListContainer(props) {
 
   const [products, setProducts] = useState([])
+
   const { categoryId } = useParams()
 
   useEffect(() => {
     if (categoryId === undefined) {
-      getProducts()
+      firebaseGetProducts()
         .then((data) => setProducts(data))
         .catch((error) => console.error(error))
     } else {
-      getPoductsByCategory(categoryId)
+      firebaseGetProductsByCategory(categoryId)
         .then((data) => setProducts(data))
         .catch((error) => {
-          console.error(error)
+          console.log(error.message)
         })
     }
   }, [categoryId])
 
-  return (
-    <Box px={{base: 4, sm: 20, lg: 30, '2xl': 40}}>
-      <Box paddingTop={'20px'}>
-        <Text
-          fontSize={{base: '2xl', sm: '4xl'}}
-        >
-          {props.greeting}
-        </Text>
+  if (products.length > 0) {
+    return (
+      <Box px={{ base: 4, sm: 20, lg: 30, '2xl': 40 }}>
+        <Box paddingTop={'20px'}>
+          <Text
+            fontSize={{ base: '2xl', sm: '4xl' }}
+          >
+            {props.greeting}
+          </Text>
+        </Box>
+
+        <ItemList productsList={products} />
+
       </Box>
+    )
+  }
+  else {
+    return (
+      <Center p={'50px 0'} >
+        <VStack>
 
-      <ItemList productsList={products} />
+          <Spinner size={'xl'} />
 
-    </Box>
-  )
+          <Text fontSize={{ base: 'xl', sm: 'xl' }} >
+            Cargando ...
+          </Text>
 
+        </VStack>
+      </Center>
+    )
+  }
 }
+

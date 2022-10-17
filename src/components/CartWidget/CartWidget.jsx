@@ -18,7 +18,7 @@ export default function CartWidget() {
 
   return (
     <Box position={'relative'}>
-      <Link as={ReachLink} to={'/'}>
+      <Link as={ReachLink} to={'/cart'}>
         <Icon
           as={HiShoppingCart}
           w={6}

@@ -5,21 +5,18 @@ import {
   Image,
   Badge,
   useColorModeValue,
-  Icon,
-  chakra,
-  Tooltip,
+  Link,
   Text,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 
-import { FiShoppingCart } from 'react-icons/fi';
+import { Link as ReachLink } from 'react-router-dom';
 
 function Item({ product }) {
   return (
     // Card box container
     <Box
       bg={useColorModeValue('white', 'gray.800')}
-      width={{ base: 'xs', sm: 'sm', xl:'lg' }}
+      width={{ base: 'xs', sm: 'sm', xl: 'lg' }}
       borderWidth="1px"
       rounded="lg"
       shadow="lg"
@@ -37,7 +34,7 @@ function Item({ product }) {
         />
       )}
 
-      <Link to={`/item/${product.id}`}>
+      <Link as={ReachLink} to={`/item/${product.id}`}>
         {/* Product img */}
         <Image
           src={product.img}
@@ -68,16 +65,12 @@ function Item({ product }) {
           >
             {product.title}
           </Box>
-          <Tooltip
-            label="Add to cart"
-            bg="white"
-            placement={'top'}
-            color={'gray.800'}
-            fontSize={'1.2em'}>
-            <chakra.a href={'#'} display={'flex'}>
-              <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-            </chakra.a>
-          </Tooltip>
+
+
+          <Text color={useColorModeValue('gray.500', 'gray.400')} >
+            {` ${product.stock} unidades`}
+          </Text>
+
         </Flex>
 
         <Flex justifyContent="space-between" alignContent="center">
@@ -88,11 +81,6 @@ function Item({ product }) {
             {` ${product.price}`}
           </Box>
         </Flex>
-        <Text
-          color={useColorModeValue('gray.500', 'gray.400')}
-        >
-          {` ${product.stock} unidades`}
-        </Text>
       </Box>
     </Box>
   );
