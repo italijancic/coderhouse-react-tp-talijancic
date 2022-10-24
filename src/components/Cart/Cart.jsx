@@ -35,34 +35,36 @@ export default function Cart() {
   } else {
 
     return (
-      <Container maxW={'8xl'} py={'20px'}>
+      <Container maxW={'7xl'} py={'20px'}>
 
-        <Flex>
+        <Flex justify={'center'}>
           <Box maxW={{ lg: '75%' }}>
+
             {cart.map((item) => {
               return (
                 <Grid
                   py={'10px'}
                   key={item.id}
-                  templateRows={{ base: 'repeat(2, 1fr)', lg: 'repeat(1, 1fr)' }}
-                  templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(6, 1fr)' }}
-                  gap={{base: 10, lg: 10}}
+                  templateRows={{ base: 'repeat(2, 1fr)', md: 'repeat(1, 1fr)' }}
+                  templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(6, 1fr)' }}
+                  gap={5}
                 >
 
-                  <GridItem colSpan={{ base: 1, lg: 2 }}>
-                    <Flex>
-                      <Center>
+                  <GridItem colSpan={{ base: 1, md: 2 }}>
+                    <Center>
+                      <Flex>
                         <Image
                           rounded={'md'}
                           alt={'product image'}
                           src={item.img}
                           fit={'cover'}
+                          maxH={'200px'}
                         />
-                      </Center>
-                    </Flex>
+                      </Flex>
+                    </Center>
                   </GridItem>
 
-                  <GridItem colSpan={{ base: 1, lg: 4 }}>
+                  <GridItem colSpan={{ base: 1, md: 4 }}>
                     <Stack
                       spacing={{ base: .5, sm: 1 }}
                       divider={
@@ -109,22 +111,21 @@ export default function Cart() {
                     </Stack>
                   </GridItem>
                 </Grid>
-
               )
             })}
 
           </Box>
 
           <Show above='lg'>
-            <Box width={'25%'} m={'0 0 0 50px'} py={'20px'}>
+            <Box width={'25%'} m={'0 0 0 30px'} py={'20px'}>
               <UserForm
                 cart={cart}
                 getTotalPrice={getTotalPrice}
                 clearCart={clearCart}
               />
             </Box>
-          </Show>
 
+          </Show>
         </Flex>
 
         <Show below='lg'>
