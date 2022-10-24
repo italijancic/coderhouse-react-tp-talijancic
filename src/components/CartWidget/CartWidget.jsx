@@ -27,8 +27,8 @@ export default function CartWidget() {
       <Text
         fontSize={'small'}
         position='absolute'
-        bottom={-0.5}
-        right={-1.5}
+        bottom={-1}
+        right={ getTotalItemCount()>9 ? -3 : -1.5}
       >
         {getTotalItemCount()}
       </Text>

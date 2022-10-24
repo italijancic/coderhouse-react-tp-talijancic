@@ -35,10 +35,10 @@ export default function Cart() {
   } else {
 
     return (
-      <Container maxW={'8xl'}>
+      <Container maxW={'8xl'} py={'20px'}>
 
         <Flex>
-          <Box maxW={{ lg: '70%' }} py={'20px'}>
+          <Box maxW={{ lg: '75%' }}>
             {cart.map((item) => {
               return (
                 <Grid
@@ -46,7 +46,7 @@ export default function Cart() {
                   key={item.id}
                   templateRows={{ base: 'repeat(2, 1fr)', lg: 'repeat(1, 1fr)' }}
                   templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(6, 1fr)' }}
-                  gap={10}
+                  gap={{base: 10, lg: 10}}
                 >
 
                   <GridItem colSpan={{ base: 1, lg: 2 }}>
@@ -116,8 +116,7 @@ export default function Cart() {
           </Box>
 
           <Show above='lg'>
-
-            <Box width={'23%'} m={'0 0 0 50px'} py={'20px'}>
+            <Box width={'25%'} m={'0 0 0 50px'} py={'20px'}>
               <UserForm
                 cart={cart}
                 getTotalPrice={getTotalPrice}
@@ -125,6 +124,7 @@ export default function Cart() {
               />
             </Box>
           </Show>
+
         </Flex>
 
         <Show below='lg'>
