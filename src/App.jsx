@@ -1,5 +1,9 @@
 import React from 'react';
-import { ChakraProvider, theme } from '@chakra-ui/react';
+import {
+  // Button,
+  ChakraProvider,
+  theme ,
+} from '@chakra-ui/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
@@ -11,8 +15,13 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 
 import { CartContextProvider } from './contexts/CartContext'
 import Cart from './components/Cart/Cart';
+// import { sendDataToFirebase } from './services/firebase';
 
 function App() {
+
+  // function handlerHelper(){
+  //   sendDataToFirebase()
+  // }
 
   return (
     <CartContextProvider>
@@ -28,8 +37,17 @@ function App() {
             <Route path='/category/:categoryId' element={<ItemListContainer greeting='Lista de Productos' />} />
             <Route path='/item/:id' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/' element={<Cart />} />
+            {/* Se podria acá generar un componente para mostrar el detalle de la compra */}
+            <Route path='/thankyou/:orderId' element={<h1>Gracias por tu compra</h1>} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
+
+          {/* <Button
+            onClick={handlerHelper}
+          >
+            Enviar datos
+          </Button> */}
 
           <Footer />
 

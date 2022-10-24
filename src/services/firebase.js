@@ -7,7 +7,12 @@ import {
     getDoc,
     query,
     where,
+    addDoc,
+    writeBatch,
+    documentId,
 } from 'firebase/firestore'
+
+import { products } from '../mockAPI/mockAPI'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -70,6 +75,84 @@ export const firebaseGetProductsByCategory = async (category) => {
         return error.message
     }
 
+}
+
+// export const firebaseCreateBuyOrder = async (orderData) => {
+
+//     try {
+//         console.log('Order to add: ',orderData)
+
+//         const collectionRef = collection(db, 'orders')
+//         const newOrder = await addDoc(collectionRef, orderData)
+
+//         return newOrder.id
+
+//     } catch (error) {
+//         return error
+//     }
+// }
+
+// With stock control
+export const firebaseCreateBuyOrder = async (orderData) => {
+
+    try {
+        console.log('Order to add: ',orderData)
+
+        const batch = writeBatch(db)
+
+        const ordersRef = collection(db, 'orders')
+        const productsRef = collection(db, 'products')
+
+        const arraysId = orderData.cart.map((item) => item.id)
+
+        const q = query(productsRef, where(documentId(), 'in', arraysId ))
+
+        const itemsToUpdate = await getDocs(q)
+
+        itemsToUpdate.docs.forEach( (doc) => {
+            const intemInCart = orderData.cart.find( item => item.id === doc.id)
+            batch.update(doc.ref, {
+                stock: doc.data().stock - intemInCart.count
+            })
+        })
+        batch.commit()
+
+        const newOrder = await addDoc(ordersRef, orderData)
+
+        return newOrder.id
+
+    } catch (error) {
+        return error
+    }
+}
+
+export const firebaseGetBuyOrder = async (id) => {
+
+    try {
+        const docRef = doc(db, 'orders', id)
+        const order = await getDoc(docRef)
+        if (order.exists())
+            return { id: order.id, ...order.data() }
+        else
+            throw new Error('Order not found')
+    } catch (error) {
+        return error
+    }
+}
+
+export const sendDataToFirebase = async () => {
+    try {
+        const collectionRef = collection(db, 'products')
+
+        for ( let product of products ) {
+            delete product.id
+            const newDoc = await addDoc(collectionRef, product)
+            console.log(newDoc.id)
+        }
+
+    } catch (error) {
+        return error
+    }
 }
 
 export default firebaseApp

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import {
   Box,
   Text,
-  Spinner,
   Center,
   VStack,
+  Spinner,
 } from '@chakra-ui/react'
 
 import { useParams } from 'react-router-dom'
@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom'
 import ItemList from './ItemList'
 
 import { firebaseGetProducts, firebaseGetProductsByCategory } from '../../services/firebase'
+// import PageNotFound from '../PageNotFound/PageNotFound'
 
 export default function ItemListContainer(props) {
 

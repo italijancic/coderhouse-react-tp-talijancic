@@ -8,7 +8,12 @@ function CartContextProvider(props) {
 
   function addToCart(item, count) {
     // Verificar si el item existe en el carro, si existe solo modificar la cantidad
-    setCart([...cart, { ...item, count }])
+    const foundedItem = isInCart(item.id)
+    if ( foundedItem === undefined ) {
+      setCart([...cart, { ...item, count }])
+    } else {
+      setCart([...cart, { ...item, count }])
+    }
   }
 
   function getTotalItemCount() {
@@ -32,16 +37,14 @@ function CartContextProvider(props) {
     })
   }
 
-  // Add funciton to get total price
   function getTotalPrice() {
     let totalPrice = 0
     cart.forEach((item) => {
-      return totalPrice += item.price
+      return totalPrice += (item.price*item.count)
     })
     return totalPrice
   }
 
-  // Add function to clear car
   function clearCart() {
     setCart([])
   }
