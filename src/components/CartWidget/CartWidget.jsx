@@ -5,7 +5,6 @@ import {
   Icon,
   Link,
   Text,
-  // HStack,
   Box,
 } from '@chakra-ui/react'
 import { Link as ReachLink } from 'react-router-dom';

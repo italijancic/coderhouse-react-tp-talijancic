@@ -114,7 +114,6 @@ export default function ItemDetail({ product }) {
                 <Button
                   colorScheme={'teal'}
                   variant='solid'
-
                 >
                   Ver Carrito
                 </Button>

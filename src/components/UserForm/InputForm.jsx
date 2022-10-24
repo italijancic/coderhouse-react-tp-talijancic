@@ -9,7 +9,7 @@ import {
 export default function InputForm(props) {
 
   return (
-    <FormControl>
+    <FormControl py={'10px'}>
       <FormLabel >{props.title}</FormLabel>
       <Input
         value={props.value}

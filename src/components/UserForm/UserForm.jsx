@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 import {
   Button,
-  // FormControl,
-  Box,
+  Stack,
 } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
@@ -27,9 +26,12 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
   })
 
   function onInputChange(evt) {
-    let key = evt.target.name
-    let value = evt.target.value
-    setUser(values => ({...values, [key]: value}))
+
+    setUser({
+      ...user,
+      [evt.target.name]: evt.target.value
+    })
+
   }
 
   function onSubmit(evt) {
@@ -37,11 +39,6 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
 
     const buyerData = user
 
-    setUser({
-      name: '',
-      age: '',
-      phone: '',
-    })
 
     const orderData = {
       buyerData: buyerData,
@@ -60,6 +57,11 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
           confirmButtonText: 'OK'
         }).then(() => {
           clearCart()
+          setUser({
+            name: '',
+            age: '',
+            phone: '',
+          })
           navigate('/')
           // We can do this here too
           // navigate(`/thankyou/${newOrderId}`)
@@ -68,41 +70,43 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
   }
 
   return (
-    <Box>
-      <InputForm
-        value={user.name}
-        title="Nombre"
-        name="name"
-        required={true}
-        onChange={onInputChange}
-      />
+    <Stack>
+      <form onSubmit={onSubmit}>
+        <InputForm
+          value={user.name}
+          title="Nombre"
+          name="name"
+          required={true}
+          onChange={onInputChange}
+        />
 
-      <InputForm
-        value={user.age}
-        title="Edad"
-        name="age"
-        required={true}
-        onChange={onInputChange}
-      />
+        <InputForm
+          value={user.age}
+          title="Edad"
+          name="age"
+          required={true}
+          onChange={onInputChange}
+        />
 
-      <InputForm
-        value={user.phone}
-        title="Telefono"
-        name="phone"
-        required={true}
-        onChange={onInputChange}
-      />
+        <InputForm
+          value={user.phone}
+          title="Telefono"
+          name="phone"
+          required={true}
+          onChange={onInputChange}
+        />
 
-      <Button
-        onClick={onSubmit}
-        colorScheme='teal'
-        variant='solid'
-        px='30px'
-        size={'sm'}
-        m={'10px'}
-      >
-        Crear Orden
-      </Button>
-    </Box>
+        <Button
+          onClick={onSubmit}
+          alignSelf={'end'}
+          colorScheme='teal'
+          variant='solid'
+          my={'10px'}
+        >
+          Crear Orden
+        </Button>
+
+      </form>
+    </Stack>
   )
 }
