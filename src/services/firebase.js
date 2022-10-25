@@ -8,8 +8,8 @@ import {
     query,
     where,
     addDoc,
-    writeBatch,
-    documentId,
+    // writeBatch,
+    // documentId,
 } from 'firebase/firestore'
 
 import { products } from '../mockAPI/mockAPI'
@@ -77,47 +77,13 @@ export const firebaseGetProductsByCategory = async (category) => {
 
 }
 
-// export const firebaseCreateBuyOrder = async (orderData) => {
-
-//     try {
-//         console.log('Order to add: ',orderData)
-
-//         const collectionRef = collection(db, 'orders')
-//         const newOrder = await addDoc(collectionRef, orderData)
-
-//         return newOrder.id
-
-//     } catch (error) {
-//         return error
-//     }
-// }
-
-// With stock control
 export const firebaseCreateBuyOrder = async (orderData) => {
 
     try {
         console.log('Order to add: ',orderData)
 
-        const batch = writeBatch(db)
-
-        const ordersRef = collection(db, 'orders')
-        const productsRef = collection(db, 'products')
-
-        const arraysId = orderData.cart.map((item) => item.id)
-
-        const q = query(productsRef, where(documentId(), 'in', arraysId ))
-
-        const itemsToUpdate = await getDocs(q)
-
-        itemsToUpdate.docs.forEach( (doc) => {
-            const intemInCart = orderData.cart.find( item => item.id === doc.id)
-            batch.update(doc.ref, {
-                stock: doc.data().stock - intemInCart.count
-            })
-        })
-        batch.commit()
-
-        const newOrder = await addDoc(ordersRef, orderData)
+        const collectionRef = collection(db, 'orders')
+        const newOrder = await addDoc(collectionRef, orderData)
 
         return newOrder.id
 
@@ -125,6 +91,40 @@ export const firebaseCreateBuyOrder = async (orderData) => {
         return error
     }
 }
+
+// With stock control
+// export const firebaseCreateBuyOrder = async (orderData) => {
+
+//     try {
+//         console.log('Order to add: ',orderData)
+
+//         const batch = writeBatch(db)
+
+//         const ordersRef = collection(db, 'orders')
+//         const productsRef = collection(db, 'products')
+
+//         const arraysId = orderData.cart.map((item) => item.id)
+
+//         const q = query(productsRef, where(documentId(), 'in', arraysId ))
+
+//         const itemsToUpdate = await getDocs(q)
+
+//         itemsToUpdate.docs.forEach( (doc) => {
+//             const intemInCart = orderData.cart.find( item => item.id === doc.id)
+//             batch.update(doc.ref, {
+//                 stock: doc.data().stock - intemInCart.count
+//             })
+//         })
+//         batch.commit()
+
+//         const newOrder = await addDoc(ordersRef, orderData)
+
+//         return newOrder.id
+
+//     } catch (error) {
+//         return error
+//     }
+// }
 
 export const firebaseGetBuyOrder = async (id) => {
 
