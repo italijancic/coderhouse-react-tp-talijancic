@@ -21,7 +21,7 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
 
   const [user, setUser] = useState({
     name: '',
-    age: '',
+    email: '',
     phone: '',
   })
 
@@ -56,15 +56,16 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
           text: 'Muchas gracias, finalizaste tu compra',
           confirmButtonText: 'OK'
         }).then(() => {
+          // Empty cart
           clearCart()
+          // Clear state
           setUser({
             name: '',
-            age: '',
+            email: '',
             phone: '',
           })
+          // Back to home
           navigate('/')
-          // We can do this here too
-          // navigate(`/thankyou/${newOrderId}`)
         })
       })
   }
@@ -76,14 +77,16 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
           value={user.name}
           title="Nombre"
           name="name"
+          type='text'
           required={true}
           onChange={onInputChange}
         />
 
         <InputForm
-          value={user.age}
-          title="Edad"
-          name="age"
+          value={user.email}
+          title="Email"
+          name="email"
+          type='email'
           required={true}
           onChange={onInputChange}
         />
@@ -92,6 +95,7 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
           value={user.phone}
           title="Telefono"
           name="phone"
+          type='tel'
           required={true}
           onChange={onInputChange}
         />

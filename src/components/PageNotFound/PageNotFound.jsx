@@ -1,7 +1,7 @@
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
 
-export default function PageNotFound() {
+export default function PageNotFound(props) {
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -10,13 +10,13 @@ export default function PageNotFound() {
         size="2xl"
         bgGradient="linear(to-r, teal.400, teal.600)"
         backgroundClip="text">
-        404
+        {props.title===undefined ? 404 : props.title}
       </Heading>
       <Text fontSize="18px" mt={3} mb={2}>
-        Pagina no encontrada
+        {props.subtitle === undefined ? 'Pagina no encontrada' : props.subtitle}
       </Text>
       <Text color={'gray.500'} mb={6}>
-        La página que buscas no se encuentra disponible!.
+        {props.msg === undefined ? 'La página que buscas no se encuentra disponible!.' : props.msg}
       </Text>
 
       <Link to={'/'}>

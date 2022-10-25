@@ -38,8 +38,6 @@ function App() {
             <Route path='/item/:id' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/' element={<Cart />} />
-            {/* Se podria acá generar un componente para mostrar el detalle de la compra */}
-            <Route path='/thankyou/:orderId' element={<h1>Gracias por tu compra</h1>} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
 

@@ -30,7 +30,11 @@ export default function Cart() {
   if (cart.length < 1) {
     return (
       // Made msg parametric
-      <PageNotFound />
+      <PageNotFound
+        title='Carro vacío'
+        subtitle='No agregaste ningún item a tu carro aún'
+        msg=''
+      />
     )
   } else {
 

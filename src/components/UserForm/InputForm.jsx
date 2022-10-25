@@ -15,7 +15,7 @@ export default function InputForm(props) {
         value={props.value}
         required={props.required}
         name={props.name}
-        type="text"
+        type={props.type}
         onChange={props.onChange}
       />
     </FormControl>
