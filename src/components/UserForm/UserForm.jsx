@@ -52,7 +52,7 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
         Swal.fire({
           title: 'Gracias!',
           icon: 'success',
-          text: 'Muchas gracias, finalizaste tu compra',
+          text: 'Muchas gracias, finalizaste tu compra. ',
           confirmButtonText: 'OK'
         }).then(() => {
           // Empty cart
