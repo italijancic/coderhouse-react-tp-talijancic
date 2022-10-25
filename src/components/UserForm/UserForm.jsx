@@ -49,7 +49,6 @@ export default function UserForm({ cart, getTotalPrice, clearCart }) {
 
     firebaseCreateBuyOrder(orderData)
       .then(newOrderId => {
-        // Ver como mostrar el ID de compra
         Swal.fire({
           title: 'Gracias!',
           icon: 'success',

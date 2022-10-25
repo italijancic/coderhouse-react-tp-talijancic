@@ -79,19 +79,15 @@ export default function ItemDetail({ product }) {
                   borderColor={'gray.600'}
                 />
               }>
-              <VStack spacing={{ base: 4, sm: 6 }}>
+              <VStack spacing={{ base: 4, sm: 6 }} align={'start'}>
                 <Text
                   color={'gray.500'}
                   fontSize={'2xl'}
                   fontWeight={'300'}>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  {product.highlight}
                 </Text>
                 <Text fontSize={'lg'}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                  aliquid amet at delectus doloribus dolorum expedita hic, ipsum
-                  maxime modi nam officiis porro, quae, quisquam quos
-                  reprehenderit velit? Natus, totam.
+                  {product.brief}
                 </Text>
               </VStack>
             </Stack>
