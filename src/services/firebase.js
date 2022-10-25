@@ -80,11 +80,8 @@ export const firebaseGetProductsByCategory = async (category) => {
 export const firebaseCreateBuyOrder = async (orderData) => {
 
     try {
-        console.log('Order to add: ',orderData)
-
         const collectionRef = collection(db, 'orders')
         const newOrder = await addDoc(collectionRef, orderData)
-
         return newOrder.id
 
     } catch (error) {

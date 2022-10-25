@@ -12,7 +12,6 @@ import { useParams } from 'react-router-dom'
 import ItemList from './ItemList'
 
 import { firebaseGetProducts, firebaseGetProductsByCategory } from '../../services/firebase'
-// import PageNotFound from '../PageNotFound/PageNotFound'
 
 export default function ItemListContainer(props) {
 

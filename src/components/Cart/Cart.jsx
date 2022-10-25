@@ -2,16 +2,7 @@ import React, { useContext } from 'react'
 
 import {
   Container,
-  // Button,
-  // Stack,
-  // Heading,
-  // Text,
   Flex,
-  // Image,
-  // Grid,
-  // GridItem,
-  // StackDivider,
-  // Center,
   Box,
   Show,
 } from '@chakra-ui/react';
