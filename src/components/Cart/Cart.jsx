@@ -5,6 +5,7 @@ import {
   Flex,
   Box,
   Show,
+  Heading
 } from '@chakra-ui/react';
 
 
@@ -31,13 +32,24 @@ export default function Cart() {
       <Container maxW={'7xl'} py={'20px'}>
 
         <Flex justify={'center'}>
-          <Box maxW={{md:'70%'}} p={{md: '0 40px 0 0'}}>
+          <Box maxW={{ md: '70%' }} p={{ md: '0 40px 0 0' }}>
             {/* Render each item on cart as a cart item */}
             {cart.map((item) => {
               return (
                 <CartItem key={item.id} item={item} removeItem={removeItem} />
               )
             })}
+
+            {/* Print total price */}
+            <Box textAlign={'end'} p={{base: '0 0 20px 0', md: '20px 0'}}>
+              <Heading
+                lineHeight={1.1}
+                fontWeight={300}
+                fontSize={{ base: 'xl', sm: '2xl', lg: '3xl' }}
+              >
+                {`Total: U$S ${getTotalPrice()}`}
+              </Heading>
+            </Box>
           </Box>
 
           <Show above='md'>
