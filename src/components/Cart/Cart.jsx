@@ -53,19 +53,19 @@ export default function Cart() {
           </Box>
 
           <Show above='md'>
-            <Box width={'30%'} p={'0 0 0 40px'} key={new Date().getTime()}>
+            <Box width={'30%'} p={'0 0 0 40px'}>
               <UserForm
                 cart={cart}
                 getTotalPrice={getTotalPrice}
                 clearCart={clearCart}
               />
             </Box>
-
           </Show>
+
         </Flex>
 
         <Show below='md'>
-          <Box key={new Date().getTime()}>
+          <Box>
             <UserForm
               cart={cart}
               getTotalPrice={getTotalPrice}
