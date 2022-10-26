@@ -128,7 +128,7 @@ export default function CartItem({item, removeItem}) {
                 color={'gray.500'}
                 fontWeight={300}
                 fontSize={'xl'}>
-                {`Total: U$S ${item.price}`}
+                {`Total: U$S ${item.price * item.count}`}
               </Text>
 
               <Button
